@@ -16,3 +16,17 @@
         - gparted
         - qbittorrent
         - thunderbird
+
+  - name: Copy bashrc
+    copy:
+      src: /home/fred/Github/ansible/files/bashrc
+      dest: /home/fred/.bashrc
+      owner: root
+      group: root
+
+  - name: Copy i3
+    copy:
+      src: /home/fred/Github/ansible/files/i3
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
