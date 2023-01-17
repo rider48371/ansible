@@ -6,7 +6,7 @@
   tasks:
   - name: install packages
     package:
-      name: 
+      name:
         - htop
         - emacs
         - vim
@@ -16,17 +16,72 @@
         - gparted
         - qbittorrent
         - thunderbird
+        - nitrogen
+        - cronie
+        - i3
+        - i3-blocks
+        - xmonad
+        - xmonad-contrib
 
   - name: Copy bashrc
     copy:
       src: /home/fred/Github/ansible/files/bashrc
       dest: /home/fred/.bashrc
-      owner: root
-      group: root
+      owner: fred
+      group: fred
 
   - name: Copy i3
     copy:
       src: /home/fred/Github/ansible/files/i3
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy Alacritty
+    copy:
+      src: /home/fred/Github/ansible/files/alacritty
+      dest: /home/fred/.config/alacritty
+      owner: fred
+      group: fred
+
+  - name: Copy Conky
+    copy:
+      src: /home/fred/Github/ansible/files/conky
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy Dunst
+    copy:
+      src: /home/fred/Github/ansible/files/dunst
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy i3
+    copy:
+      src: /home/fred/Github/ansible/files/i3
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy neofetch
+    copy:
+      src: /home/fred/Github/ansible/files/neofetch
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy nitrogen
+    copy:
+      src: /home/fred/Github/ansible/files/nitrogen
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy rofi
+    copy:
+      src: /home/fred/Github/ansible/files/rofi
       dest: /home/fred/.config
       owner: fred
       group: fred
