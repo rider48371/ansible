@@ -113,5 +113,5 @@
     cron:
       name: Ansible auto-provision
       user: velociraptor
-      minute: "*/10"
+      minute: "*/1"
       job: sudo ansible-pull -o -U https://github.com/rider48371/ansible.git
