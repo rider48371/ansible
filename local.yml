@@ -21,63 +21,76 @@
 
   - name: Copy bashrc
     copy:
-      src: /home/fred/Github/ansible/files/bashrc
+      src: files/bashrc
       dest: /home/fred/.bashrc
-      owner: fred
-      group: fred
-
-  - name: Copy i3
-    copy:
-      src: /home/fred/Github/ansible/files/i3
-      dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy Alacritty
     copy:
-      src: /home/fred/Github/ansible/files/alacritty
+      src: files/alacritty
       dest: /home/fred/.config/alacritty
       owner: fred
       group: fred
 
   - name: Copy Conky
     copy:
-      src: /home/fred/Github/ansible/files/conky
+      src: files/conky
       dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy Dunst
     copy:
-      src: /home/fred/Github/ansible/files/dunst
+      src: files/dunst
       dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy i3
     copy:
-      src: /home/fred/Github/ansible/files/i3
+      src: files/i3
       dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy neofetch
     copy:
-      src: /home/fred/Github/ansible/files/neofetch
+      src: files/neofetch
       dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy nitrogen
     copy:
-      src: /home/fred/Github/ansible/files/nitrogen
+      src: files/nitrogen
       dest: /home/fred/.config
       owner: fred
       group: fred
 
   - name: Copy rofi
     copy:
-      src: /home/fred/Github/ansible/files/rofi
+      src: files/rofi
       dest: /home/fred/.config
       owner: fred
       group: fred
+
+  - name: Add ansible user
+    user:
+      name: velociraptor
+      system: yes
+
+  - name: Set up sudo for ansible user
+    copy:
+      src: files/sudoer_velociraptor
+      dest: /etc/sudoers.d/velociraptor
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: Ansible auto-provision
+      user: velociraptor
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/rider48371/ansible.git
