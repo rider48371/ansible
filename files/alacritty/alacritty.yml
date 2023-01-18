@@ -1,6 +1,9 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Added by ansible
+# Added
+# By
+# Ansible
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
