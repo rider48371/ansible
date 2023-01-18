@@ -18,10 +18,6 @@
         - thunderbird
         - nitrogen
         - cronie
-        - i3
-        - i3-blocks
-        - xmonad
-        - xmonad-contrib
 
   - name: Copy bashrc
     copy:
