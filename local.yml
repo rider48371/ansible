@@ -114,4 +114,4 @@
       name: Ansible auto-provision
       user: velociraptor
       minute: "*/10"
-      job: ansible-pull -o -U https://github.com/rider48371/ansible.git
+      job: sudo ansible-pull -o -U https://github.com/rider48371/ansible.git
