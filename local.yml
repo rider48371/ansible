@@ -75,6 +75,27 @@
       owner: fred
       group: fred
 
+  - name: Copy Onedrive
+    copy:
+      src: files/onedrive
+      dest: ~/Documents
+      owner: fred
+      group: fred
+
+  - name: Copy xmobar
+    copy:
+      src: files/xmobar
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy xmonad
+    copy:
+      src: files/xmonad
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Add ansible user
     user:
       name: velociraptor
