@@ -19,6 +19,18 @@
         - nitrogen
         - cronie
 
+  - name: Start SSHD
+    service:
+      name: sshd
+      state: started
+      enabled: yes
+
+  - name: Start cronie.service
+    service:
+      name: cronie
+      state: started
+      enabled: yes
+
   - name: Copy bashrc
     copy:
       src: files/bashrc
