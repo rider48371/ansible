@@ -19,6 +19,10 @@
         - nitrogen
         - cronie
         - openssh
+        - xterm
+        - dmenu
+        - rofi
+        - firefox
 
   - name: Start SSHD
     service:
