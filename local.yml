@@ -23,6 +23,12 @@
         - dmenu
         - rofi
         - firefox
+        - xclip
+        - xdotool
+        - pandoc
+        - xclip
+        - xdotool
+        - pandoc
 
   - name: Start SSHD
     service:
