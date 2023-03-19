@@ -138,3 +138,12 @@
       user: velociraptor
       minute: "*/1"
       job: ansible-pull -o -U https://github.com/rider48371/ansible.git
+
+  - name: add update cron job
+    cron:
+      name: auto update
+      user: root
+      weekday: 0
+      hour: 7
+      minute : 30
+      job: pacman -Syu --noconfirm
