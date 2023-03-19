@@ -93,13 +93,6 @@
       owner: fred
       group: fred
 
-  - name: Copy Onedrive
-    copy:
-      src: files/onedrive
-      dest: ~/Documents
-      owner: fred
-      group: fred
-
   - name: Copy xmobar
     copy:
       src: files/xmobar
@@ -138,7 +131,7 @@
     cron:
       name: auto update
       user: root
-      weekday: 0
-      hour: 7
-      minute : 30
+      weekday: 2
+      hour: 2
+      minute : 0
       job: pacman -Syu --noconfirm
