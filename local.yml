@@ -13,6 +13,8 @@
         - alacritty
         - code
         - dolphin
+        - dunst
+        - neofetch
         - libreoffice-fresh
         - gparted
         - qbittorrent
@@ -24,6 +26,7 @@
         - dmenu
         - rofi
         - firefox
+        - xmobar
 
   - name: Start SSHD
     service:
