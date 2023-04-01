@@ -34,6 +34,7 @@
         - rofi
         - firefox
         - xmobar
+        - tigervnc
 
   - name: Start SSHD
     service:
