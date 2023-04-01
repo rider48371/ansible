@@ -11,6 +11,11 @@
         - emacs
         - vim
         - alacritty
+        - gimp
+        - gparted
+        - flatpak
+        - okular
+        - vlc
         - code
         - dolphin
         - dunst
