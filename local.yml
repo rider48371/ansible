@@ -11,6 +11,8 @@
         - emacs
         - vim
         - alacritty
+        - starship
+        - exa
         - gimp
         - gparted
         - flatpak
