@@ -35,6 +35,7 @@
         - firefox
         - xmobar
         - tigervnc
+        - neovim
 
   - name: Start SSHD
     service:
@@ -114,6 +115,13 @@
   - name: Copy xmonad
     copy:
       src: files/xmonad
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy Neovim
+    copy:
+      src: files/nvim
       dest: /home/fred/.config
       owner: fred
       group: fred
