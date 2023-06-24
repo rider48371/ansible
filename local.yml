@@ -128,6 +128,14 @@
       owner: fred
       group: fred
 
+  - name: Copy TMUX
+    copy:
+      src: files/.tmux.conf
+      dest: /home/fred
+      owner: fred
+      group: fred
+
+
   - name: Add ansible user
     user:
       name: velociraptor
