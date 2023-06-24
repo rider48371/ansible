@@ -36,6 +36,8 @@
         - xmobar
         - tigervnc
         - neovim
+        - nodejs
+        - npm
 
   - name: Start SSHD
     service:
