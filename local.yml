@@ -8,7 +8,6 @@
     package:
       name:
         - htop
-        - emacs
         - vim
         - alacritty
         - starship
@@ -38,6 +37,7 @@
         - neovim
         - nodejs
         - npm
+        - zsh
 
   - name: Start SSHD
     service:
@@ -51,6 +51,48 @@
       state: started
       enabled: yes
 
+    - name: Copy Alacritty
+    copy:
+      src: files/alacritty
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy arco-chadwm
+    copy:
+      src: files/arco-chadwm
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy arco-dusk
+    copy:
+      src: files/arco-dusk
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy arco-dwm
+    copy:
+      src: files/arco-dwm
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy arco-st
+    copy:
+      src: files/arco-st
+      dest: /home/fred/.config/arco-st
+      owner: fred
+      group: fred
+
+  - name: Copy arco-awesome
+    copy:
+      src: files/arco-awesome
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy bashrc
     copy:
       src: files/bashrc
@@ -58,10 +100,10 @@
       owner: fred
       group: fred
 
-  - name: Copy Alacritty
+  - name: Copy bspwm
     copy:
-      src: files/alacritty
-      dest: /home/fred/.config/alacritty
+      src: files/bspwm
+      dest: /home/fred/.config
       owner: fred
       group: fred
 
@@ -79,9 +121,37 @@
       owner: fred
       group: fred
 
+  - name: Copy eww
+    copy:
+      src: files/eww
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy fontconfig
+    copy:
+      src: files/fontconfig
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy herbstluftwm
+    copy:
+      src: files/herbstluftwm
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy i3
     copy:
       src: files/i3
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy leftwm
+    copy:
+      src: files/leftwm
       dest: /home/fred/.config
       owner: fred
       group: fred
@@ -91,11 +161,81 @@
       src: files/neofetch
       dest: /home/fred/.config
       owner: fred
-      group: fred
+      group: fredi
 
   - name: Copy nitrogen
     copy:
       src: files/nitrogen
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+  
+  - name: Copy nitrogen
+    copy:
+      src: files/nitrogen
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy onedrive
+    copy:
+      src: files/onedrive
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy openbox
+    copy:
+      src: files/openbox
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy pamac
+    copy:
+      src: files/pamac
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy paru
+    copy:
+      src: files/paru
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy picom.conf
+    copy:
+      src: files/picom.conf
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy polybar
+    copy:
+      src: files/polybar
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy pulse
+    copy:
+      src: files/pulse
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy qt5ct
+    copy:
+      src: files/qt5ct
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy qtile
+    copy:
+      src: files/qtile
       dest: /home/fred/.config
       owner: fred
       group: fred
@@ -107,9 +247,44 @@
       owner: fred
       group: fred
 
-  - name: Copy xmobar
+  - name: Copy spectrwm
     copy:
-      src: files/xmobar
+      src: files/spectrwm
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy thunar
+    copy:
+      src: files/Thunar
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy tmux.conf
+    copy:
+      src: files/tmux.conf
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy variety
+    copy:
+      src: files/variety
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy volumeicon
+    copy:
+      src: files/volumeicon
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy worm
+    copy:
+      src: files/worm
       dest: /home/fred/.config
       owner: fred
       group: fred
@@ -117,14 +292,7 @@
   - name: Copy xmonad
     copy:
       src: files/xmonad
-      dest: /home/fred/.config
-      owner: fred
-      group: fred
-
-  - name: Copy Neovim
-    copy:
-      src: files/nvim
-      dest: /home/fred/.config
+      dest: /home/fred
       owner: fred
       group: fred
 
@@ -147,12 +315,3 @@
       user: velociraptor
       minute: "*/1"
       job: ansible-pull -o -U https://github.com/rider48371/ansible.git
-
-  - name: add update cron job
-    cron:
-      name: auto update
-      user: root
-      weekday: 2
-      hour: 2
-      minute : 0
-      job: pacman -Syu --noconfirm
