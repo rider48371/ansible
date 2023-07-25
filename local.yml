@@ -282,6 +282,13 @@
       owner: fred
       group: fred
 
+  - name: Copy wallpapers
+    copy:
+      src: files/wallpapers
+      dest: /home/fred
+      owner: fred
+      group: fred
+
   - name: Copy worm
     copy:
       src: files/worm
