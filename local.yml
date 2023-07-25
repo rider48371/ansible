@@ -86,9 +86,9 @@
       owner: fred
       group: fred
 
-  - name: Copy arco-awesome
+  - name: Copy awesome
     copy:
-      src: files/arco-awesome
+      src: files/awesome
       dest: /home/fred/.config
       owner: fred
       group: fred
