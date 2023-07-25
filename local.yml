@@ -161,7 +161,7 @@
       src: files/neofetch
       dest: /home/fred/.config
       owner: fred
-      group: fredi
+      group: fred
 
   - name: Copy nitrogen
     copy:
