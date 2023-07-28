@@ -32,6 +32,10 @@
         - dmenu
         - rofi
         - firefox
+        - xmonad
+        - i3
+        - i3blocks
+        - i3lock
         - xmobar
         - tigervnc
         - neovim
