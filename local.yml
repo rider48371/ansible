@@ -37,6 +37,8 @@
         - i3blocks
         - i3lock
         - xmobar
+        - plasma
+        - kde-applications
         - tigervnc
         - neovim
         - nodejs
