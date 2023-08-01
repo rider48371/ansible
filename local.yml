@@ -70,6 +70,13 @@
       owner: fred
       group: fred
 
+  - name: Copy i3
+    copy:
+      src: files/i3
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy onedrive
     copy:
       src: files/onedrive
