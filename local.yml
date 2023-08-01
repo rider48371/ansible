@@ -33,6 +33,7 @@
         - rofi
         - firefox
         - xmonad
+        - xmonad-contrib
         - i3
         - i3blocks
         - i3lock
