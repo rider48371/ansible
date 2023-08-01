@@ -188,3 +188,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c /home/fred/.config/i3/i3status.conf
 }
+
+#Window Compositor
+exec_always picom -f
