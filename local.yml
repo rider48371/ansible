@@ -14,7 +14,6 @@
         - exa
         - gimp
         - gparted
-        - flatpak
         - okular
         - vlc
         - code
@@ -26,6 +25,7 @@
         - qbittorrent
         - thunderbird
         - nitrogen
+        - feh
         - cronie
         - openssh
         - xterm
@@ -46,7 +46,6 @@
         - npm
         - zsh
         - ttf-font-awesome
-        - ttf-ms-fonts
         - ttf-mononoki-nerd
         - lxappearance
         - xdotool
@@ -64,23 +63,9 @@
       state: started
       enabled: yes
 
-  - name: Copy Alacritty
-    copy:
-      src: files/alacritty
-      dest: /home/fred/.config
-      owner: fred
-      group: fred
-
   - name: Copy i3
     copy:
       src: files/i3
-      dest: /home/fred/.config
-      owner: fred
-      group: fred
-
-  - name: Copy onedrive
-    copy:
-      src: files/onedrive
       dest: /home/fred/.config
       owner: fred
       group: fred

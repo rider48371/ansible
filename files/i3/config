@@ -242,5 +242,8 @@ bar {
         status_command i3status -c /home/fred/.config/i3/i3status.conf
 }
 
+#Set wallpaper
+exec_always feh --bg-fill --randomize ~/wallpapers/*
+
 #Window Compositor
 exec_always picom -f
