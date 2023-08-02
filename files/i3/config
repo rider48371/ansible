@@ -49,7 +49,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -188,6 +188,9 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c /home/fred/.config/i3/i3status.conf
 }
+
+#Set wallpaper
+exec_always feh --bg-fill --randomize ~/wallpapers/*
 
 #Window Compositor
 exec_always picom -f
