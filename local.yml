@@ -33,6 +33,7 @@
         - rofi
         - firefox
         - xmonad
+        - xmonad-contrib
         - i3
         - i3blocks
         - i3lock
@@ -48,6 +49,7 @@
         - ttf-mononoki-nerd
         - lxappearance
         - xdotool
+        - picom
 
   - name: Start SSHD
     service:
@@ -64,6 +66,13 @@
   - name: Copy Alacritty
     copy:
       src: files/alacritty
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy i3
+    copy:
+      src: files/i3
       dest: /home/fred/.config
       owner: fred
       group: fred
