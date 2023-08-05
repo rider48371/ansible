@@ -8,9 +8,11 @@
     package:
       name:
         - htop
+        - pacman-contrib
         - vim
         - alacritty
         - starship
+        - ranger
         - exa
         - gimp
         - gparted
