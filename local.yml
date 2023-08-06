@@ -68,7 +68,7 @@
 
   - name: Copy Bashrc
     copy:
-      src: files/Bashrc
+      src: files/bashrc
       dest: /home/fred/.bashrc
       owner: fred
       group: fred
