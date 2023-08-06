@@ -66,8 +66,8 @@
       state: started
       enabled: yes
 
-  -name: Copy Bashrc
-   copy:
+  - name: Copy Bashrc
+    copy:
       src: files/Bashrc
       dest: /home/fred/.bashrc
       owner: fred
