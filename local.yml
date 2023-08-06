@@ -40,6 +40,7 @@
         - i3blocks
         - i3lock
         - xmobar
+        - trayer
         - plasma
         - kde-applications
         - tigervnc
@@ -64,6 +65,13 @@
       name: cronie
       state: started
       enabled: yes
+
+  - name: Copy Bashrc
+    copy:
+      src: files/bashrc
+      dest: /home/fred/.bashrc
+      owner: fred
+      group: fred
 
   - name: Copy i3
     copy:
