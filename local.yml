@@ -87,6 +87,13 @@
       owner: fred
       group: fred
 
+  - name: Copy vnc
+    copy:
+      src: files/vnc
+      dest: /home/fred/.vnc
+      owner: fred
+      group: fred
+
   - name: Copy wallpapers
     copy:
       src: files/wallpapers
