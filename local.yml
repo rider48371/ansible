@@ -66,6 +66,13 @@
       state: started
       enabled: yes
 
+  - name: Copy alacritty
+    copy:
+      src: files/alacritty
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy Bashrc
     copy:
       src: files/bashrc
