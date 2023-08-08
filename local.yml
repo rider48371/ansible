@@ -73,6 +73,13 @@
       owner: fred
       group: fred
 
+  - name: Copy Conky
+    copy:
+      src: files/conky
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy i3
     copy:
       src: files/i3
@@ -97,6 +104,13 @@
   - name: Copy wallpapers
     copy:
       src: files/wallpapers
+      dest: /home/fred
+      owner: fred
+      group: fred
+
+  - name: Copy xmonad
+    copy:
+      src: files/xmonad
       dest: /home/fred
       owner: fred
       group: fred
