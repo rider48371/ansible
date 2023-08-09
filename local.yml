@@ -69,10 +69,24 @@
       state: started
       enabled: yes
 
+  - name: Copy alacritty
+    copy:
+      src: files/alacritty
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
   - name: Copy Bashrc
     copy:
       src: files/bashrc
       dest: /home/fred/.bashrc
+      owner: fred
+      group: fred
+
+  - name: Copy Conky
+    copy:
+      src: files/conky
+      dest: /home/fred/.config
       owner: fred
       group: fred
 
@@ -100,6 +114,13 @@
   - name: Copy wallpapers
     copy:
       src: files/wallpapers
+      dest: /home/fred
+      owner: fred
+      group: fred
+
+  - name: Copy xmonad
+    copy:
+      src: files/xmonad
       dest: /home/fred
       owner: fred
       group: fred

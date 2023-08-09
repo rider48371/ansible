@@ -3,7 +3,8 @@
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
-export ALTERNATE_EDITOR=""                        # setting for emacsclient
+export VISUAL=nvim;
+export EDITOR=nvim;
 
 ### SET MANPAGER
 ### Uncomment only one of these!
