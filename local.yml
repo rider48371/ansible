@@ -72,7 +72,7 @@
   - name: Copy alacritty
     copy:
       src: files/alacritty
-      dest: /home/fred/.config
+      dest: /home/fred/.config/i3
       owner: fred
       group: fred
 
