@@ -55,10 +55,10 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+c kill
 
 # start file manager
-bindsym $mod+Shift+f ranger
+bindsym $mod+Shift+f exec ranger
 
 #start firefox
-bindsym $mod+Shift+b firefox
+bindsym $mod+Shift+b exec firefox
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run

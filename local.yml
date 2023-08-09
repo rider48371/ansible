@@ -49,6 +49,9 @@
         - npm
         - zsh
         - ttf-font-awesome
+        - otf-font-awesome
+        - ttf-sourcecodepro-nerd
+        - ttf-ubuntu-font-family
         - ttf-mononoki-nerd
         - lxappearance
         - xdotool
