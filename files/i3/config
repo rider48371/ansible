@@ -55,7 +55,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+c kill
 
 # start file manager
-bindsym $mod+Shift+f exec ranger
+bindsym $mod+Shift+f exec alacritty -e "ranger"
 
 #start firefox
 bindsym $mod+Shift+b exec firefox
