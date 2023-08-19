@@ -257,3 +257,6 @@ exec_always feh --bg-fill --randomize ~/wallpapers/*
 
 #Window Compositor
 exec_always picom -f
+
+#used for the calendar popup
+for_window [class="Yad"] floating enable
