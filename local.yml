@@ -8,6 +8,7 @@
     package:
       name:
         - htop
+        - xclip
         - pacman-contrib
         - vim
         - alacritty
