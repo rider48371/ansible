@@ -9,9 +9,10 @@ picom &
 killall conky &
 sleep 3 && conky -c "$HOME"/.config/conky/qtile/conkyrc
 killall volumeicon &
-run volumeicon &
-run nm-applet &
-run blueberry-tray &
+volumeicon &
+nm-applet &
+blueberry-tray &
+~/Documents/onedrive
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to restore last saved wallpaper
