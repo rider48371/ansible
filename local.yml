@@ -110,6 +110,7 @@
       dest: /home/fred/Documents
       owner: fred
       group: fred
+      mode: a+x
 
   - name: Copy Qtile
     copy:
@@ -146,6 +147,36 @@
       dest: /home/fred
       owner: fred
       group: fred
+
+  - name: execute arch-update
+    file:
+      dest: /home/fred/.config/i3/scripts/arch-update
+      mode: a+x
+
+  - name: execute calendar
+    file:
+      dest: /home/fred/.config/i3/scripts/calendar
+      mode: a+x
+
+  - name: execute disk
+    file:
+      dest: /home/fred/.config/i3/scripts/disk
+      mode: a+x
+
+  - name: execute memory
+    file:
+      dest: /home/fred/.config/i3/scripts/memory
+      mode: a+x
+
+  - name: execute spotify.py
+    file:
+      dest: /home/fred/.config/i3/scripts/spotify.py
+      mode: a+x
+
+  - name: execute volume
+    file:
+      dest: /home/fred/.config/i3/scripts/volume
+      mode: a+x
 
   - name: Add ansible user
     user:
