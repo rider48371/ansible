@@ -39,17 +39,14 @@
         - dmenu
         - rofi
         - firefox
-        - xmonad
-        - xmonad-contrib
+        - qtile
         - i3
         - i3blocks
         - i3lock
         - network-manager-applet
         - blueberry
-        - xmobar
         - trayer
         - plasma
-        - kde-applications
         - tigervnc
         - neovim
         - nodejs
