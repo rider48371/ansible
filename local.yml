@@ -39,17 +39,14 @@
         - dmenu
         - rofi
         - firefox
-        - xmonad
-        - xmonad-contrib
+        - qtile
         - i3
         - i3blocks
         - i3lock
         - network-manager-applet
         - blueberry
-        - xmobar
         - trayer
         - plasma
-        - kde-applications
         - tigervnc
         - neovim
         - nodejs
@@ -137,13 +134,6 @@
   - name: Copy wallpapers
     copy:
       src: files/wallpapers
-      dest: /home/fred
-      owner: fred
-      group: fred
-
-  - name: Copy xmonad
-    copy:
-      src: files/xmonad
       dest: /home/fred
       owner: fred
       group: fred
