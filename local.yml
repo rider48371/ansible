@@ -138,13 +138,6 @@
       owner: fred
       group: fred
 
-  - name: Copy xmonad
-    copy:
-      src: files/xmonad
-      dest: /home/fred
-      owner: fred
-      group: fred
-
   - name: execute arch-update
     file:
       dest: /home/fred/.config/i3/scripts/arch-update
