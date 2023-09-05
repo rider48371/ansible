@@ -13,6 +13,9 @@
         - volumeicon
         - rclone
         - caprine
+        - rofi-emoji
+        - rofi-calc
+        - libqalculate
         - pacman-contrib
         - vim
         - alacritty
