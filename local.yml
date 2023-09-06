@@ -133,11 +133,11 @@
 
   - name: Copy powermenu
     copy: 
-    src: files/powermenu
-    dest: /home/fred/.local/bin
-    owner: fred
-    group: fred
-    mode: a+x
+      src: files/powermenu
+      dest: /home/fred/.local/bin
+      owner: fred
+      group: fred
+      mode: a+x
 
   - name: Copy Qtile
     copy:
