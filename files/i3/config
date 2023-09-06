@@ -64,10 +64,20 @@ bindsym $mod+Shift+f exec alacritty -e ranger
 bindsym $mod+Shift+b exec firefox
 
 #start caprine
-bindsym $mod+Shift+m exec caprine
+bindsym $mod+Shift+m exec Caprine
+
+#rofi emoji selector
+bindsym $mod+Shift+e exec rofi -show emoji
+
+#rofi calculator
+bindsym $mod+Shift+x exec rofi -show calc -modi calc -no-show-match -no-sort
+
+#rofi wifimenu
+bindsym $mod+Shift+w exec  /home/fred/.local/bin/wifimenu
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+Shift+Return exec rofi -show drun
 bindsym $mod+Shift+p exec rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -130,8 +140,8 @@ bindsym $mod+1 workspace number 1 Alacritty
 bindsym $mod+2 workspace number 2 Firefox
 bindsym $mod+3 workspace number 3 Chat
 bindsym $mod+4 workspace number 4 Music
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
+bindsym $mod+5 workspace number 5 Plex
+bindsym $mod+6 workspace number 6 Email
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
@@ -154,6 +164,8 @@ assign [class="firefox"] 2 Firefox
 assign [class="Caprine"] 3 Chat
 assign [class="Spotify"] 4 Spotify
 assign [class="plexmediaplayer"] 5 Plex
+assign [class="thunderbird"] 6 Email
+
 # reload the configuration file
 bindsym $mod+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

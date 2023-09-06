@@ -13,6 +13,9 @@
         - volumeicon
         - rclone
         - caprine
+        - rofi-emoji
+        - rofi-calc
+        - libqalculate
         - pacman-contrib
         - vim
         - alacritty
@@ -59,7 +62,6 @@
         - ttf-mononoki-nerd
         - lxappearance
         - xdotool
-        - picom
 
   - name: Start SSHD
     service:
@@ -70,6 +72,12 @@
   - name: Start cronie.service
     service:
       name: cronie
+      state: started
+      enabled: yes
+
+  - name: Start bluetooth.service
+    service:
+      name: bluetooth.service
       state: started
       enabled: yes
 
@@ -109,6 +117,28 @@
       group: fred
       mode: a+x
 
+  - name: Copy picom
+    copy: 
+      src: files/picom
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
+
+  - name: Copy power.rasi
+    copy:
+      src: files/rofi/power.rasi
+      dest: /home/fred/rofi
+      owner: fred
+      group: fred
+
+  - name: Copy powermenu
+    copy: 
+      src: files/powermenu
+      dest: /home/fred/.local/bin
+      owner: fred
+      group: fred
+      mode: a+x
+
   - name: Copy Qtile
     copy:
       src: files/qtile
@@ -116,11 +146,17 @@
       owner: fred
       group: fred
 
+  - name: Copy rofi
+    copy:
+      src: files/rofi
+      dest: /home/fred/.config
+      owner: fred
+      group: fred
 
   - name: Copy tmux.conf
     copy:
       src: files/tmux.conf
-      dest: /home/fred/.config
+      dest: /home/fred/.tmux.conf
       owner: fred
       group: fred
 
@@ -137,6 +173,22 @@
       dest: /home/fred
       owner: fred
       group: fred
+
+  - name: Copy wifimenu
+    copy:
+      src: files/wifimenu
+      dest: /home/fred/.local/bin
+      owner: fred
+      group: fred
+      mode: a+x
+
+  - name: Copy yay.sh
+    copy:
+      src: files/yay.sh
+      dest: /home/fred/.local/bin
+      owner: fred
+      group: fred
+      mode: a+x
 
   - name: execute arch-update
     file:
