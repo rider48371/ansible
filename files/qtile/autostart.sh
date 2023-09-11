@@ -2,9 +2,6 @@
 
 lxsession &
 picom &
-volumeicon &
-nm-applet &
-blueberry-tray &
 ~/Documents/onedrive &
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
