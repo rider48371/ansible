@@ -63,6 +63,9 @@ bindsym $mod+Shift+f exec alacritty -e ranger
 #start firefox
 bindsym $mod+Shift+b exec firefox
 
+#rofi-bluetooth
+bindsym $mod+b exec rofi-bluetooth
+
 #start caprine
 bindsym $mod+Shift+m exec Caprine
 
@@ -71,6 +74,9 @@ bindsym $mod+Shift+e exec rofi -show emoji
 
 #rofi calculator
 bindsym $mod+Shift+x exec rofi -show calc -modi calc -no-show-match -no-sort
+
+#clipmenu
+bindsym $mod+x exec clipmenu
 
 #rofi wifimenu
 bindsym $mod+Shift+w exec  /home/fred/.local/bin/wifimenu

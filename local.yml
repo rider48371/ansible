@@ -15,6 +15,7 @@
         - caprine
         - rofi-emoji
         - rofi-calc
+        - clipmenu
         - libqalculate
         - pacman-contrib
         - vim
