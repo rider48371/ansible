@@ -82,6 +82,12 @@
       state: started
       enabled: yes
 
+  - name: Start reflector
+    service:
+      name: reflector
+      state: started
+      enabled: yes
+
   - name: Copy alacritty
     copy:
       src: files/alacritty
