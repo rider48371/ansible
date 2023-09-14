@@ -82,6 +82,12 @@
       state: started
       enabled: yes
 
+  - name: Start reflector
+    service:
+      name: reflector
+      state: started
+      enabled: yes
+
   - name: Copy alacritty
     copy:
       src: files/alacritty
@@ -134,7 +140,7 @@
 
   - name: Copy powermenu
     copy: 
-      src: files/powermenu
+      src: files/.local/bin/powermenu
       dest: /home/fred/.local/bin
       owner: fred
       group: fred
@@ -177,7 +183,7 @@
 
   - name: Copy wifimenu
     copy:
-      src: files/wifimenu
+      src: files/.local/bin/wifimenu
       dest: /home/fred/.local/bin
       owner: fred
       group: fred
@@ -185,7 +191,7 @@
 
   - name: Copy yay.sh
     copy:
-      src: files/yay.sh
+      src: files/.local/bin/yay.sh
       dest: /home/fred/.local/bin
       owner: fred
       group: fred
