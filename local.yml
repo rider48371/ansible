@@ -82,12 +82,6 @@
       state: started
       enabled: yes
 
-  - name: Start reflector
-    service:
-      name: reflector
-      state: started
-      enabled: yes
-
   - name: Copy alacritty
     copy:
       src: files/alacritty
@@ -115,14 +109,6 @@
       dest: /home/fred/.config
       owner: fred
       group: fred
-
-  - name: Copy nfs.sh
-    copy:
-      src: files/nfs.sh
-      dest: /home/fred/.local/bin
-      owner: fred
-      group: fred
-      mode: a+x
 
   - name: Copy onedrive
     copy:
@@ -199,7 +185,7 @@
 
   - name: Copy yay.sh
     copy:
-      src: files/.local/bin/yay.sh
+      src: files/yay.sh
       dest: /home/fred/.local/bin
       owner: fred
       group: fred
