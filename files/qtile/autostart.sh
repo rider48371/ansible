@@ -3,7 +3,6 @@
 lxsession &
 picom &
 ~/Documents/onedrive &
-~/.local/bin/nfs.sh &
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to restore last saved wallpaper

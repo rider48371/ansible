@@ -274,8 +274,5 @@ exec_always picom -f
 #Run OneDrive
 exec_always ~/Documents/onedrive
 
-#Run nfs
-exec_always /home/fred/.local/bin/nfs.sh
-
 #used for the calendar popup
 for_window [class="Yad"] floating enable
