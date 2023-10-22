@@ -43,6 +43,7 @@
         - dmenu
         - rofi
         - firefox
+        - plasma
         - qtile
         - i3
         - i3blocks
