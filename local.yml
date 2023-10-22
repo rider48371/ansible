@@ -50,7 +50,6 @@
         - network-manager-applet
         - blueberry
         - trayer
-        - plasma
         - tigervnc
         - neovim
         - nodejs
