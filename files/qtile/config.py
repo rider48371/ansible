@@ -73,7 +73,7 @@ keys = [
              desc='Ranger'
              ),
          Key([mod, "shift"], "m",
-             lazy.spawn("caprine"),
+             lazy.spawn("messenger-nativefier"),
              desc='messenger'
              ),
          Key([mod, "shift"], "x",
@@ -143,7 +143,7 @@ keys = [
 
 groups = [Group("Alacritty", layout='monadtall', matches=[Match(wm_class=["Alacritty"])]),
           Group("Firefox", layout='monadtall', matches=[Match(wm_class=["firefox"])]),
-          Group("Chat", layout='monadtall', matches=[Match(wm_class=["Caprine"])]),
+          Group("Chat", layout='monadtall', matches=[Match(wm_class=["Messenger"])]),
           Group("Music", layout='monadtall', matches=[Match(wm_class=["Spotify"])]),
           Group("Plex", layout='monadtall', matches=[Match(wm_class=["Plex"])]),
           Group("Email", layout='monadtall', matches=[Match(wm_class=["thunderbird"])]),
