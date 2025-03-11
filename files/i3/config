@@ -67,7 +67,7 @@ bindsym $mod+Shift+b exec firefox
 bindsym $mod+b exec rofi-bluetooth
 
 #start caprine
-bindsym $mod+Shift+m exec Caprine
+bindsym $mod+Shift+m exec messenger-nativefier
 
 #rofi emoji selector
 bindsym $mod+Shift+e exec rofi -show emoji
@@ -167,7 +167,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 assign [class="Alacritty"] 1 Alacritty
 assign [class="firefox"] 2 Firefox
-assign [class="Caprine"] 3 Chat
+assign [class="Messenger"] 3 Chat
 assign [class="Spotify"] 4 Spotify
 assign [class="Plex"] 5 Plex
 assign [class="thunderbird"] 6 Email
@@ -266,7 +266,7 @@ bar {
 }
 
 #Set wallpaper
-exec_always feh --bg-fill --randomize ~/wallpapers/*
+exec_always feh --bg-fill --randomize ~/Pictures/wallpapers/*
 
 #Window Compositor
 exec_always picom -f
