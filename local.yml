@@ -43,6 +43,7 @@
         - dmenu
         - rofi
         - firefox
+        - plasma
         - qtile
         - i3
         - i3blocks
@@ -50,7 +51,6 @@
         - network-manager-applet
         - blueberry
         - trayer
-        - plasma
         - tigervnc
         - neovim
         - nodejs
@@ -79,12 +79,6 @@
   - name: Start bluetooth.service
     service:
       name: bluetooth.service
-      state: started
-      enabled: yes
-
-  - name: Start reflector
-    service:
-      name: reflector
       state: started
       enabled: yes
 
@@ -177,7 +171,7 @@
   - name: Copy wallpapers
     copy:
       src: files/wallpapers
-      dest: /home/fred
+      dest: /home/fred/Pictures
       owner: fred
       group: fred
 
@@ -191,7 +185,7 @@
 
   - name: Copy yay.sh
     copy:
-      src: files/.local/bin/yay.sh
+      src: files/yay.sh
       dest: /home/fred/.local/bin
       owner: fred
       group: fred
