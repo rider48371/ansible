@@ -143,7 +143,7 @@ keys = [
 
 groups = [Group("Alacritty", layout='monadtall', matches=[Match(wm_class=["Alacritty"])]),
           Group("Firefox", layout='monadtall', matches=[Match(wm_class=["firefox"])]),
-          Group("Chat", layout='monadtall', matches=[Match(wm_class=["Messenger"])]),
+          Group("Chat", layout='monadtall', matches=[Match(wm_class=["Ferdium"])]),
           Group("Music", layout='monadtall', matches=[Match(wm_class=["Spotify"])]),
           Group("Plex", layout='monadtall', matches=[Match(wm_class=["Plex"])]),
           Group("Email", layout='monadtall', matches=[Match(wm_class=["thunderbird"])]),
