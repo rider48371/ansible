@@ -5,7 +5,7 @@ import socket
 import subprocess
 from libqtile import qtile
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
