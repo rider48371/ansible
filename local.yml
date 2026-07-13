@@ -1,4 +1,4 @@
----
+
 - hosts: localhost
   connection: local
   become: true
@@ -11,43 +11,39 @@
         - xclip
         - lxsession
         - volumeicon
-        - rclone
         - rofi-emoji
         - rofi-calc
-        - clipmenu
         - libqalculate
         - pacman-contrib
         - vim
         - alacritty
+        - fastfetch
+        - clipmenu
         - starship
         - ranger
         - exa
-        - gimp
         - gparted
         - okular
         - vlc
         - dolphin
         - dunst
-        - neofetch
         - libreoffice-fresh
-        - gparted
         - qbittorrent
-        - thunderbird
-        - nitrogen
         - feh
+        - tmux
         - cronie
         - openssh
         - xterm
         - dmenu
         - rofi
-        - firefox
-        - plasma
-        - qtile
         - i3
         - i3blocks
+        - i3lock
         - network-manager-applet
-        - blueberry
-        - trayer
+        - acpi
+        - python3
+        - qtile
+        - python-dbus-next
         - tigervnc
         - neovim
         - nodejs
@@ -58,9 +54,23 @@
         - ttf-sourcecodepro-nerd
         - ttf-ubuntu-font-family
         - ttf-mononoki-nerd
+        - ttf-jetbrains-mono-nerd
         - lxappearance
         - xdotool
-        - flatpak
+        - steam
+        - wine
+        - winetricks
+        - lutris
+
+  - name: Make .local/bin
+    ansible.builtin.file:
+      path: /home/fred/.local/bin
+      state: directory
+      
+  - name: Make .local/share/applications folder
+    ansible.builtin.file:
+      path: /home/fred/.local/share/applications
+      state: directory 
 
   - name: Start SSHD
     service:
@@ -80,149 +90,72 @@
       state: started
       enabled: yes
 
-  - name: Copy alacritty
-    copy:
+  - name: Link alacritty
+    file:
       src: files/alacritty
       dest: /home/fred/.config
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy Bashrc
-    copy:
+  - name: Link Bashrc
+    file:
       src: files/bashrc
       dest: /home/fred/.bashrc
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy Conky
-    copy:
-      src: files/conky
-      dest: /home/fred/.config
-      owner: fred
-      group: fred
-
-  - name: Copy i3
-    copy:
+  - name: Link i3
+    file:
       src: files/i3
       dest: /home/fred/.config
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy onedrive
+  - name: Copy mimeapps.list
     copy:
-      src: files/onedrive
-      dest: /home/fred/Documents
+      src: files/.local/share/applications/mimeapps.list
+      dest: /home/fred/.local/share/applications/mimeapps.list
       owner: fred
       group: fred
-      mode: a+x
 
-  - name: Copy picom
-    copy: 
+  - name: Link picom
+    file:
       src: files/picom
       dest: /home/fred/.config
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy power.rasi
-    copy:
-      src: files/rofi/power.rasi
-      dest: /home/fred/rofi
-      owner: fred
-      group: fred
-
-  - name: Copy powermenu
-    copy: 
-      src: files/.local/bin/powermenu
-      dest: /home/fred/.local/bin
-      owner: fred
-      group: fred
-      mode: a+x
-
-  - name: Copy Qtile
-    copy:
+  - name: Link qtile
+    file:
       src: files/qtile
       dest: /home/fred/.config
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy rofi
-    copy:
+  - name: Link rofi
+    file:
       src: files/rofi
       dest: /home/fred/.config
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy tmux.conf
-    copy:
+  - name: Link tmux.conf
+    file:
       src: files/tmux.conf
       dest: /home/fred/.tmux.conf
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy vnc
-    copy:
+  - name: Link vnc
+    file:
       src: files/vnc
       dest: /home/fred/.vnc
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy wallpapers
-    copy:
+  - name: Link wallpapers
+    file:
       src: files/wallpapers
       dest: /home/fred/Pictures
-      owner: fred
-      group: fred
+      state: link
 
-  - name: Copy wifimenu
-    copy:
+  - name: Link wifimenu
+    file:
       src: files/.local/bin/wifimenu
-      dest: /home/fred/.local/bin
-      owner: fred
-      group: fred
-      mode: a+x
-
-  - name: Copy yay.sh
-    copy:
-      src: files/yay.sh
-      dest: /home/fred/.local/bin
-      owner: fred
-      group: fred
-      mode: a+x
-
-  - name: execute arch-update
-    file:
-      dest: /home/fred/.config/i3/scripts/arch-update
-      mode: a+x
-
-  - name: execute calendar
-    file:
-      dest: /home/fred/.config/i3/scripts/calendar
-      mode: a+x
-
-  - name: execute disk
-    file:
-      dest: /home/fred/.config/i3/scripts/disk
-      mode: a+x
-
-  - name: execute memory
-    file:
-      dest: /home/fred/.config/i3/scripts/memory
-      mode: a+x
-
-  - name: execute spotify.py
-    file:
-      dest: /home/fred/.config/i3/scripts/spotify.py
-      mode: a+x
-
-  - name: execute volume
-    file:
-      dest: /home/fred/.config/i3/scripts/volume
-      mode: a+x
-
-  - name: execute qtile autostart.sh
-    file:
-      dest: /home/fred/.config/qtile/autostart.sh
-      mode: a+x
+      dest: /home/fred/.local/bin/wifimenu
+      state: link
 
   - name: Add ansible user
     user:
@@ -242,4 +175,4 @@
       name: Ansible auto-provision
       user: velociraptor
       minute: "*/1"
-      job: ansible-pull -o -U https://github.com/rider48371/ansible.git
+      job: ansible-pull -o -U https://github.com/rider48371/ansible_laptop.git
