@@ -48,7 +48,6 @@
         - neovim
         - nodejs
         - npm
-        - zsh
         - ttf-font-awesome
         - otf-font-awesome
         - ttf-sourcecodepro-nerd
