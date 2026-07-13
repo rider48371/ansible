@@ -1,5 +1,4 @@
-
-- hosts: localhost
+hosts: localhost
   connection: local
   become: true
 
@@ -92,7 +91,7 @@
   - name: Link alacritty
     file:
       src: /home/fred/github/ansible/files/alacritty
-      dest: /home/fred/.config
+      dest: /home/fred/.config/alacritty
       state: link
 
   - name: Link Bashrc
@@ -104,7 +103,7 @@
   - name: Link i3
     file:
       src: /home/fred/github/ansible/files/i3
-      dest: /home/fred/.config
+      dest: /home/fred/.config/i3
       state: link
 
   - name: Copy mimeapps.list
@@ -117,19 +116,19 @@
   - name: Link picom
     file:
       src: /home/fred/github/ansible/files/picom
-      dest: /home/fred/.config
+      dest: /home/fred/.config/picom
       state: link
 
   - name: Link qtile
     file:
       src: /home/fred/github/ansible/files/qtile
-      dest: /home/fred/.config
+      dest: /home/fred/.config/qtile
       state: link
 
   - name: Link rofi
     file:
       src: /home/fred/github/ansible/files/rofi
-      dest: /home/fred/.config
+      dest: /home/fred/.config/rofi
       state: link
 
   - name: Link tmux.conf
