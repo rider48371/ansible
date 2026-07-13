@@ -60,6 +60,7 @@
         - ttf-mononoki-nerd
         - lxappearance
         - xdotool
+        - flatpak
 
   - name: Start SSHD
     service:
