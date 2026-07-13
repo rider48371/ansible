@@ -89,19 +89,19 @@ hosts: localhost
       enabled: yes
 
   - name: Link alacritty
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/alacritty
       dest: /home/fred/.config/alacritty
       state: link
 
   - name: Link Bashrc
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/bashrc
       dest: /home/fred/.bashrc
       state: link
 
   - name: Link i3
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/i3
       dest: /home/fred/.config/i3
       state: link
@@ -114,43 +114,43 @@ hosts: localhost
       group: fred
 
   - name: Link picom
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/picom
       dest: /home/fred/.config/picom
       state: link
 
   - name: Link qtile
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/qtile
       dest: /home/fred/.config/qtile
       state: link
 
   - name: Link rofi
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/rofi
       dest: /home/fred/.config/rofi
       state: link
 
   - name: Link tmux.conf
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/tmux.conf
       dest: /home/fred/.tmux.conf
       state: link
 
   - name: Link vnc
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/vnc
       dest: /home/fred/.vnc
       state: link
 
   - name: Link wallpapers
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/wallpapers
       dest: /home/fred/Pictures
       state: link
 
   - name: Link wifimenu
-    file:
+    ansible.builtin.file:
       src: /home/fred/github/ansible/files/.local/bin/wifimenu
       dest: /home/fred/.local/bin/wifimenu
       state: link
