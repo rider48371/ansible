@@ -146,7 +146,7 @@
   - name: Link wallpapers
     ansible.builtin.file:
       src: /home/fred/github/ansible/files/wallpapers
-      dest: /home/fred/Pictures
+      dest: /home/fred/Pictures/wallpapers
       state: link
 
   - name: Link wifimenu
