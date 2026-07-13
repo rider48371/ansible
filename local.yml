@@ -92,68 +92,68 @@
 
   - name: Link alacritty
     file:
-      src: files/alacritty
+      src: /home/fred/github/ansible/files/alacritty
       dest: /home/fred/.config
       state: link
 
   - name: Link Bashrc
     file:
-      src: files/bashrc
+      src: /home/fred/github/ansible/files/bashrc
       dest: /home/fred/.bashrc
       state: link
 
   - name: Link i3
     file:
-      src: files/i3
+      src: /home/fred/github/ansible/files/i3
       dest: /home/fred/.config
       state: link
 
   - name: Copy mimeapps.list
     copy:
-      src: files/.local/share/applications/mimeapps.list
+      src: /home/fred/github/ansible/files/.local/share/applications/mimeapps.list
       dest: /home/fred/.local/share/applications/mimeapps.list
       owner: fred
       group: fred
 
   - name: Link picom
     file:
-      src: files/picom
+      src: /home/fred/github/ansible/files/picom
       dest: /home/fred/.config
       state: link
 
   - name: Link qtile
     file:
-      src: files/qtile
+      src: /home/fred/github/ansible/files/qtile
       dest: /home/fred/.config
       state: link
 
   - name: Link rofi
     file:
-      src: files/rofi
+      src: /home/fred/github/ansible/files/rofi
       dest: /home/fred/.config
       state: link
 
   - name: Link tmux.conf
     file:
-      src: files/tmux.conf
+      src: /home/fred/github/ansible/files/tmux.conf
       dest: /home/fred/.tmux.conf
       state: link
 
   - name: Link vnc
     file:
-      src: files/vnc
+      src: /home/fred/github/ansible/files/vnc
       dest: /home/fred/.vnc
       state: link
 
   - name: Link wallpapers
     file:
-      src: files/wallpapers
+      src: /home/fred/github/ansible/files/wallpapers
       dest: /home/fred/Pictures
       state: link
 
   - name: Link wifimenu
     file:
-      src: files/.local/bin/wifimenu
+      src: /home/fred/github/ansible/files/.local/bin/wifimenu
       dest: /home/fred/.local/bin/wifimenu
       state: link
 
