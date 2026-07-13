@@ -1,8 +1,8 @@
-#!/usr/bin/env bash 
+#!/bin/bash
 
+#autostart programs
 lxsession &
-picom &
-ferdium &
+picom &> /tmp/picom.log &
 
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to restore last saved wallpaper

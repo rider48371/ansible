@@ -1,5 +1,19 @@
-#! /bin/bash
+1password
+claude-desktop-bin
+etcher-bin
+google-chrome
+insync
+iptvnator-bin
+notion-app-electron
+picom-git
+proton-ge-custom-bin
+qtile-extras
+rofi-bluetooth-git
+spotify
+ttf-aptos
+ttf-ms-fonts
+visual-studio-code-bin
+wispr-flow-appimage
 
-yay -S qtile-extras picom-git spotify rofi-bluetooth-git i3lock-color plex-desktop notion-app-electron 1password nordvpn-bin visual-studio-code-bin spotify proton-ge-custom-bin primevideo netflix disneyplus google-chrome messenger-nativefier &
 systemctl --user start clipmenud &
 systemctl --user enable clipmenud

@@ -16,7 +16,7 @@ from qtile_extras.widget.decorations import BorderDecoration
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
 myTerm = "alacritty"      # My terminal of choice
-myBrowser = "firefox" # My browser of choice
+myBrowser = "google-chrome-stable" # My browser of choice
 
 keys = [
          ### The essentials
@@ -32,25 +32,33 @@ keys = [
              lazy.spawn("rofi -show run"),
              desc='Run Show Launcher'
              ),
+         Key([mod], "e",
+             lazy.spawn("emacsclient -nc"),
+             desc='open emacs'
+             ),
          Key([mod, "shift"], "e",
              lazy.spawn("rofi -show emoji"),
              desc='emoji'
-             ),
-         Key([mod], "x",
-             lazy.spawn("clipmenu"),
-             desc='clipmenu'
-             ),
-         Key([mod, "shift"], "w",
-             lazy.spawn("/home/fred/.local/bin/wifimenu"),
-             desc='Wifi Selector'
              ),
          Key([mod], "b",
              lazy.spawn("rofi-bluetooth"),
              desc='bluetooth'
              ),
+         Key([mod, "shift"], "w",
+             lazy.spawn("/home/fred/.local/bin/wifimenu"),
+             desc='Wifi Selector'
+             ),
+         Key([mod], "x",
+             lazy.spawn("clipmenu"),
+             desc='clipmenu'
+             ),
+        Key([mod, "shift"], "s",
+            lazy.spawn("flameshot gui"),
+            desc='flameshot'
+            ),
          Key([mod, "shift"], "b",
              lazy.spawn(myBrowser),
-             desc='Firefox'
+             desc='Google Chrome'
              ),
          Key([mod], "Tab",
              lazy.next_layout(),
@@ -142,15 +150,16 @@ keys = [
 ]
 
 groups = [Group("Alacritty", layout='monadtall', matches=[Match(wm_class=["Alacritty"])]),
-          Group("Firefox", layout='monadtall', matches=[Match(wm_class=["firefox"])]),
-          Group("Chat", layout='monadtall', matches=[Match(wm_class=["Ferdium"])]),
+          Group("Chrome", layout='monadtall', matches=[Match(wm_class=["Google-chrome"])]),
+          Group("Chat", layout='monadtall', matches=[Match(wm_class=["googlemessages-nativefier-11f104","facebookmessenger-nativefier-7ab88e"])]),
           Group("Music", layout='monadtall', matches=[Match(wm_class=["Spotify"])]),
-          Group("Plex", layout='monadtall', matches=[Match(wm_class=["Plex"])]),
-          Group("Email", layout='monadtall', matches=[Match(wm_class=["thunderbird"])]),
-          Group("7", layout='monadtall'),
-          Group("8", layout='monadtall'),
+          Group("Video", layout='monadtall', matches=[Match(wm_class=["Plex"])]),
+          Group("Email", layout='monadtall', matches=[Match(wm_class=["org.mozilla.Thunderbird"])]),
+          Group("Code", layout='monadtall', matches=[Match(wm_class=["Code","Emacs"])]),
+          Group("8", layout='monadtall', matches=[Match(wm_class=["vibe-typer"])]),
           Group("9", layout='monadtall'),
           Group("10", layout='monadtall')]
+
 # Allow MODKEY+[0 through 9] to bind to groups, see https://docs.qtile.org/en/stable/manual/config/groups.html
 # MOD4 + index Number : Switch to Group[index]
 # MOD4 + shift + index Number : Send active window to another Group
@@ -304,7 +313,7 @@ def init_widgets_list():
                        background = colors[0]
                        ),
              widget.Net(
-                       interface = "enp6s0",
+                       interface = "wlan0",
                        format = 'Net: {down} ↓↑ {up}',
                        foreground = colors[3],
                        background = colors[0],
@@ -450,10 +459,22 @@ def init_widgets_list():
                        foreground = colors[0],
                        background = colors[0]
                        ),
-              widget.Systray(
-                       background = colors[0],
-                       padding = 5
+              widget.UPowerWidget(
+                        background = colors[0],
+                        border_colour = '#d8dee9',
+                        border_critical_colour = '#bf616a',
+                        padding_x = 5
+                        ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       foreground = colors[0],
+                       background = colors[0]
                        ),
+              widget.Systray(
+                      background = colors[0],
+                      padding = 5
+                      )
               ]
     return widgets_list
 
@@ -462,8 +483,7 @@ widgets_list = init_widgets_list()
 
 
 def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
-    return widgets_screen1
+    return init_widgets_list()
 
 
 widgets_screen1 = init_widgets_screen1()
