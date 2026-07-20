@@ -149,7 +149,7 @@
         user: velociraptor
         minute: "*/1"
         job: >
-          ansible-pull -o -U https://github.com/rider48371/ansible_laptop.git -d /home/fred/github/ansible local.yml || 
+          ansible-pull -o -U https://github.com/rider48371/ansible.git -d /home/fred/github/ansible local.yml || 
           (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error "Ansible Pull Failed" "The background repository sync failed.")
         state: "{{ 'absent' if (ansible_facts['hostname'] == 'omen') else 'present' }}"
 
