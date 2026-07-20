@@ -1,176 +1,155 @@
+---
 - hosts: localhost
   connection: local
   become: true
 
+  vars:
+    repo_files_dir: "/home/fred/github/ansible/files"
+    user_home: "/home/fred"
+    
+    symlink_configs:
+      - { src: "alacritty", dest: ".config/alacritty" }
+      - { src: "bashrc", dest: ".bashrc" }
+      - { src: "i3", dest: ".config/i3" }
+      - { src: "picom", dest: ".config/picom" }
+      - { src: "qtile", dest: ".config/qtile" }
+      - { src: "rofi", dest: ".config/rofi" }
+      - { src: "tmux.conf", dest: ".tmux.conf" }
+      - { src: "vnc", dest: ".vnc" }
+      - { src: "wallpapers", dest: "Pictures/wallpapers" }
+      - { src: ".local/bin/wifimenu", dest: ".local/bin/wifimenu" }
+
   tasks:
-  - name: install packages
-    package:
-      name:
-        - htop
-        - xclip
-        - lxsession
-        - volumeicon
-        - rofi-emoji
-        - rofi-calc
-        - libqalculate
-        - pacman-contrib
-        - vim
-        - alacritty
-        - fastfetch
-        - clipmenu
-        - starship
-        - ranger
-        - exa
-        - gparted
-        - okular
-        - vlc
-        - dolphin
-        - dunst
-        - libreoffice-fresh
-        - qbittorrent
-        - feh
-        - tmux
-        - cronie
-        - openssh
-        - xterm
-        - dmenu
-        - rofi
-        - i3
-        - i3blocks
-        - i3lock
-        - network-manager-applet
-        - acpi
-        - python3
-        - qtile
-        - python-dbus-next
-        - tigervnc
-        - neovim
-        - nodejs
-        - npm
-        - ttf-font-awesome
-        - otf-font-awesome
-        - ttf-sourcecodepro-nerd
-        - ttf-ubuntu-font-family
-        - ttf-mononoki-nerd
-        - ttf-jetbrains-mono-nerd
-        - lxappearance
-        - xdotool
-        - steam
-        - wine
-        - winetricks
-        - lutris
+    - name: Execute configuration management with error handling
+      block:
+        - name: Install system packages
+          ansible.builtin.package:
+            name:
+              - htop
+              - xclip
+              - lxsession
+              - volumeicon
+              - rofi-emoji
+              - rofi-calc
+              - libqalculate
+              - pacman-contrib
+              - vim
+              - alacritty
+              - fastfetch
+              - clipmenu
+              - starship
+              - ranger
+              - exa
+              - gparted
+              - okular
+              - vlc
+              - dolphin
+              - dunst
+              - libreoffice-fresh
+              - qbittorrent
+              - feh
+              - tmux
+              - cronie
+              - openssh
+              - xterm
+              - dmenu
+              - rofi
+              - i3
+              - i3blocks
+              - i3lock
+              - network-manager-applet
+              - acpi
+              - python3
+              - qtile
+              - python-dbus-next
+              - tigervnc
+              - neovim
+              - nodejs
+              - npm
+              - ttf-font-awesome
+              - otf-font-awesome
+              - ttf-sourcecodepro-nerd
+              - ttf-ubuntu-font-family
+              - ttf-mononoki-nerd
+              - ttf-jetbrains-mono-nerd
+              - lxappearance
+              - xdotool
+              - steam
+              - wine
+              - winetricks
+              - lutris
+            state: present
 
-  - name: Make .local/bin
-    ansible.builtin.file:
-      path: /home/fred/.local/bin
-      state: directory
-      
-  - name: Make .local/share/applications folder
-    ansible.builtin.file:
-      path: /home/fred/.local/share/applications
-      state: directory 
+        - name: Ensure baseline local directory skeletons exist
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: directory
+            owner: fred
+            group: fred
+            mode: '0755'
+          loop:
+            - "{{ user_home }}/.local/bin"
+            - "{{ user_home }}/.local/share/applications"
+            - "{{ user_home }}/.config"
+            - "{{ user_home }}/Pictures"
 
-  - name: Start SSHD
-    service:
-      name: sshd
-      state: started
-      enabled: yes
+        - name: Enable and start system baseline services
+          ansible.builtin.service:
+            name: "{{ item }}"
+            state: started
+            enabled: yes
+          loop:
+            - sshd
+            - cronie
+            - bluetooth
 
-  - name: Start cronie.service
-    service:
-      name: cronie
-      state: started
-      enabled: yes
+        - name: Process configuration symlinks uniformly
+          ansible.builtin.file:
+            src: "{{ repo_files_dir }}/{{ item.src }}"
+            dest: "{{ user_home }}/{{ item.dest }}"
+            state: link
+            force: yes
+            owner: fred
+            group: fred
+          loop: "{{ symlink_configs }}"
 
-  - name: Start bluetooth.service
-    service:
-      name: bluetooth.service
-      state: started
-      enabled: yes
+        - name: Copy target application MIME map configuration file
+          ansible.builtin.copy:
+            src: "{{ repo_files_dir }}/.local/share/applications/mimeapps.list"
+            dest: "{{ user_home }}/.local/share/applications/mimeapps.list"
+            owner: fred
+            group: fred
+            mode: '0644'
 
-  - name: Link alacritty
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/alacritty
-      dest: /home/fred/.config/alacritty
-      state: link
+        - name: Add dedicated system execution user account
+          ansible.builtin.user:
+            name: velociraptor
+            system: yes
+            create_home: no
 
-  - name: Link Bashrc
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/bashrc
-      dest: /home/fred/.bashrc
-      state: link
+        - name: Set up isolated passwordless sudo access rule for automation user
+          ansible.builtin.copy:
+            src: files/sudoer_velociraptor
+            dest: /etc/sudoers.d/velociraptor
+            owner: root
+            group: root
+            mode: '0440'
 
-  - name: Link i3
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/i3
-      dest: /home/fred/.config/i3
-      state: link
+      rescue:
+        - name: Send desktop notification on playbook routine failure
+          ansible.builtin.shell: |
+            sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus \
+            notify-send -u critical -i dialog-error "Ansible Provisioning Failed" "A task failed during the local.yml playbook execution check journalctl for details."
+          failed_when: false # Prevents an error here from halting the run abruptly
 
-  - name: Copy mimeapps.list
-    copy:
-      src: /home/fred/github/ansible/files/.local/share/applications/mimeapps.list
-      dest: /home/fred/.local/share/applications/mimeapps.list
-      owner: fred
-      group: fred
-
-  - name: Link picom
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/picom
-      dest: /home/fred/.config/picom
-      state: link
-
-  - name: Link qtile
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/qtile
-      dest: /home/fred/.config/qtile
-      state: link
-
-  - name: Link rofi
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/rofi
-      dest: /home/fred/.config/rofi
-      state: link
-
-  - name: Link tmux.conf
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/tmux.conf
-      dest: /home/fred/.tmux.conf
-      state: link
-
-  - name: Link vnc
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/vnc
-      dest: /home/fred/.vnc
-      state: link
-
-  - name: Link wallpapers
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/wallpapers
-      dest: /home/fred/Pictures/wallpapers
-      state: link
-
-  - name: Link wifimenu
-    ansible.builtin.file:
-      src: /home/fred/github/ansible/files/.local/bin/wifimenu
-      dest: /home/fred/.local/bin/wifimenu
-      state: link
-
-  - name: Add ansible user
-    user:
-      name: velociraptor
-      system: yes
-
-  - name: Set up sudo for ansible user
-    copy:
-      src: files/sudoer_velociraptor
-      dest: /etc/sudoers.d/velociraptor
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: add ansible-pull cron job
-    cron:
-      name: Ansible auto-provision
-      user: velociraptor
-      minute: "*/1"
-      job: ansible-pull -o -U https://github.com/rider48371/ansible_laptop.git
+    # This task remains outside the block to ensure the cron job is always kept up to date
+    - name: Manage background ansible-pull automation schedule
+      ansible.builtin.cron:
+        name: "Ansible auto-provision"
+        user: velociraptor
+        minute: "*/1"
+        job: >
+          ansible-pull -o -U https://github.com/rider48371/ansible_laptop.git -d /home/fred/github/ansible local.yml || 
+          (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error "Ansible Pull Failed" "The background repository sync failed.")
+        state: "{{ 'absent' if (ansible_hostname == 'omen') else 'present' }}"
+   
