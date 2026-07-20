@@ -127,6 +127,14 @@
             system: yes
             create_home: no
 
+        - name: Ensure home directory skeleton exists for the automation user
+          ansible.builtin.file:
+            path: /home/velociraptor
+            state: directory
+            owner: velociraptor
+            group: velociraptor
+            mode: '0700' # Keeps permissions restricted and secure
+
         - name: Set up isolated passwordless sudo access rule for automation user
           ansible.builtin.copy:
             src: files/sudoer_velociraptor
