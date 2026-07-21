@@ -193,5 +193,5 @@
         name: "Ansible auto-provision"
         user: velociraptor
         minute: "*/1"
-        job: "cd /opt/ansible && ansible-pull -o -U https://github.com -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
+        job: "cd /opt/ansible && ansible-pull -o -U https://github.com/rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
 
