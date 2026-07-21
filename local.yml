@@ -80,6 +80,12 @@
               - lutris
             state: present
 
+        - name: Globally trust the ansible directory to prevent dubious ownership errors
+          ansible.builtin.command:
+            cmd: git config --global --add safe.directory /opt/ansible
+          changed_when: false # Keeps the task idempotent
+
+
         - name: Ensure baseline local directory skeletons exist
           ansible.builtin.file:
             path: "{{ item }}"
@@ -157,4 +163,3 @@
         user: velociraptor
         minute: "*/1"
         job: "ansible-pull -o -U https://github.com/rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
-        state: "{{ 'absent' if (ansible_facts['hostname'] == 'omen') else 'present' }}"
