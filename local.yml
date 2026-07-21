@@ -151,7 +151,7 @@
           failed_when: false # Prevents an error here from halting the run abruptly
 
     # This task remains outside the block to ensure the cron job is always kept up to date
-        - name: Add structured background ansible-pull automation schedule
+    - name: Add structured background ansible-pull automation schedule
       ansible.builtin.cron:
         name: "Ansible auto-provision"
         user: velociraptor
