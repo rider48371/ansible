@@ -277,5 +277,8 @@ exec_always picom -f
 #Run OneDrive
 exec_always ~/Documents/onedrive
 
+# If the hostname is NOT 'omen', completely disable screensavers and monitor power downs (DPMS)
+exec --no-startup-id bash -c 'if [ "$(hostname)" != "omen" ]; then xset s off && xset s noblank && xset -dpms; fi'
+
 #used for the calendar popup
 for_window [class="Yad"] floating enable

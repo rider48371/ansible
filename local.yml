@@ -80,12 +80,6 @@
               - lutris
             state: present
 
-        - name: Globally trust the ansible directory to prevent dubious ownership errors
-          ansible.builtin.command:
-            cmd: git config --global --add safe.directory /opt/ansible
-          changed_when: false # Keeps the task idempotent
-
-
         - name: Ensure baseline local directory skeletons exist
           ansible.builtin.file:
             path: "{{ item }}"
@@ -139,7 +133,7 @@
             state: directory
             owner: velociraptor
             group: velociraptor
-            mode: '0700' # Keeps permissions restricted and secure
+            mode: '0700'
 
         - name: Set up isolated passwordless sudo access rule for automation user
           ansible.builtin.copy:
@@ -149,17 +143,55 @@
             group: root
             mode: '0440'
 
+        # Git Trust Configurations (Bypasses Dubious Ownership Errors Globally)
+        - name: Globally trust the ansible directory for Root context
+          ansible.builtin.command:
+            cmd: git config --global --add safe.directory /opt/ansible
+          changed_when: false
+
+        - name: Globally trust the ansible directory for Velociraptor context
+          ansible.builtin.command:
+            cmd: git config --global --add safe.directory /opt/ansible
+          become: true
+          become_user: velociraptor
+          changed_when: false
+
+        # Desktop Power Configurations (Skips your laptop 'omen')
+        - name: Prevent systemd sleep targets on desktop environments
+          ansible.builtin.systemd:
+            name: "{{ item }}"
+            masked: yes
+          loop:
+            - sleep.target
+            - suspend.target
+            - hibernate.target
+            - hybrid-sleep.target
+          when: ansible_facts['hostname'] != 'omen'
+
+        - name: Force KDE powerdevil profile to never sleep on desktops
+          ansible.builtin.shell: |
+            kwriteconfig6 --file powermanagementprofilesrc --group AC --group DimDisplay --key idleTime 0
+            kwriteconfig6 --file powermanagementprofilesrc --group AC --group ScreenBrightness --key idleTime 0
+            kwriteconfig6 --file powermanagementprofilesrc --group AC --group SuspendSession --key idleTime 0
+            kwriteconfig6 --file powermanagementprofilesrc --group AC --group SuspendSession --key suspendType 0
+            qdbus6 org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement refreshProfileConfig
+          become: true
+          become_user: fred
+          changed_when: false
+          when: ansible_facts['hostname'] != 'omen'
+          failed_when: false
+
       rescue:
         - name: Send desktop notification on playbook routine failure
           ansible.builtin.shell: |
             sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus \
             notify-send -u critical -i dialog-error "Ansible Provisioning Failed" "A task failed during the local.yml playbook execution check journalctl for details."
-          failed_when: false # Prevents an error here from halting the run abruptly
+          failed_when: false
 
-    # This task remains outside the block to ensure the cron job is always kept up to date
     - name: Add structured background ansible-pull automation schedule
       ansible.builtin.cron:
         name: "Ansible auto-provision"
         user: velociraptor
         minute: "*/1"
-        job: "ansible-pull -o -U https://github.com/rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
+        job: "cd /opt/ansible && ansible-pull -o -U https://github.com -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
+
