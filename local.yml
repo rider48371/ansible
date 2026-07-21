@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    repo_files_dir: "/home/fred/github/ansible/files"
+    repo_files_dir: "/opt/ansible/files"
     user_home: "/home/fred"
     
     symlink_configs:
@@ -156,7 +156,5 @@
         name: "Ansible auto-provision"
         user: velociraptor
         minute: "*/1"
-        job: "ansible-pull -o -U https://github.com/rider48371/ansible.git -d /home/fred/github/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed. Check your network connection or git configuration.')"
+        job: "ansible-pull -o -U https://github.com/rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send -u critical -i network-error 'Ansible Pull Failed' 'The background repository sync failed.')"
         state: "{{ 'absent' if (ansible_facts['hostname'] == 'omen') else 'present' }}"
-
-   
