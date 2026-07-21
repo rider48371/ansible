@@ -18,6 +18,7 @@
       - { src: "vnc", dest: ".vnc" }
       - { src: "wallpapers", dest: "Pictures/wallpapers" }
       - { src: ".local/bin/wifimenu", dest: ".local/bin/wifimenu" }
+      - { src: ".ssh/config", dest: ".ssh/config" }
 
   tasks:
     - name: Execute configuration management with error handling
