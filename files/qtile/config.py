@@ -540,7 +540,6 @@ def start_once():
 
     # 2. Handle desktop-only screen sleep restrictions
     hostname = socket.gethostname()
-    if hostname != "omen":
         subprocess.Popen(["xset", "s", "off"])
         subprocess.Popen(["xset", "s", "noblank"])
         subprocess.Popen(["xset", "-dpms"])

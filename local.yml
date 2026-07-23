@@ -167,7 +167,6 @@
             - suspend.target
             - hibernate.target
             - hybrid-sleep.target
-          when: ansible_facts['hostname'] != 'omen'
 
         - name: Force KDE powerdevil profile to never sleep on desktops
           ansible.builtin.shell: |
@@ -179,7 +178,6 @@
           become: true
           become_user: fred
           changed_when: false
-          when: ansible_facts['hostname'] != 'omen'
           failed_when: false
 
       rescue:
