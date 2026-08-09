@@ -145,10 +145,12 @@
             mode: '0440'
 
         # Git Trust Configurations (Bypasses Dubious Ownership Errors Globally)
-        - name: Globally trust the ansible directory for Root context
-          ansible.builtin.command:
-            cmd: git config --global --add safe.directory /opt/ansible
-          changed_when: false
+        - name: Globally trust the ansible directory for system context
+          ansible.builtin.git_config:
+            name: safe.directory
+            value: /opt/ansible
+            scope: system
+          become: true
 
         - name: Globally trust the ansible directory for Velociraptor context
           ansible.builtin.command:
