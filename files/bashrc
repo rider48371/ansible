@@ -6,6 +6,7 @@ export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH=$PATH:/home/fred/.local/bin
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 ### SET MANPAGER
 ### Uncomment only one of these!
