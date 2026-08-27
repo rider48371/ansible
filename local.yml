@@ -55,6 +55,9 @@
               - cronie
               - openssh
               - xterm
+              - emacs
+              - ripgrep
+              - fd
               - dmenu
               - rofi
               - i3
