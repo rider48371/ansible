@@ -3,10 +3,9 @@
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
-export VISUAL=nvim;
-export EDITOR=nvim;
-export PATH=$PATH:/home/fred/.local/bin
-export PATH="$HOME/.config/emacs/bin:$PATH"
+export VISUAL=emacs;
+export EDITOR=emacs -nw;
+export PATH=$PATH:/home/fred/.local/bin:HOME/.config/emacs/bin:$PATH
 
 ### SET MANPAGER
 ### Uncomment only one of these!
@@ -161,6 +160,17 @@ alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 alias sshmain="ssh fred@192.168.1.163"
 alias sshbedroom="ssh fred@192.168.1.162"
 alias sshlivingroom="ssh fred@192.168.1.161"
+
+# Open a file in a new graphical window (GUI frame)
+alias ec="emacsclient -c -a ''"
+
+# Open a file directly inside your current terminal
+alias et="emacsclient -t -a ''"
+
+# Set Emacs as your default system editor
+export VISUAL="emacsclient -c -a ''"
+export EDITOR="emacsclient -t -a ''"
+
 
 ### Run Neofetch ***
  fastfetch
