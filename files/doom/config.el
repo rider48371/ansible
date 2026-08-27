@@ -42,6 +42,10 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Remove the -nw for vterm
+(setq vterm-environment (delete "-nw" vterm-environment))
+
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
