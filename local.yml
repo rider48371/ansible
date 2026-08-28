@@ -175,6 +175,13 @@
             - hibernate.target
             - hybrid-sleep.target
 
+        - name: Secure personal SSH configuration file
+          ansible.builtin.file:
+            path: /home/fred/.ssh/config
+            owner: fred
+            group: fred
+            mode: '0600'
+
         - name: Force KDE powerdevil profile to never sleep on desktops
           ansible.builtin.shell: |
             kwriteconfig6 --file powermanagementprofilesrc --group AC --group DimDisplay --key idleTime 0
