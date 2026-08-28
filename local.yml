@@ -216,4 +216,4 @@
         name: "Ansible auto-provision"
         user: velociraptor
         minute: "*/15"
-        job: "export HOME=/var/lib/velociraptor; cd /opt/ansible && /usr/bin/ansible-pull -f -o --force -C main -U git@github-automation:rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send 'Ansible Pull' 'Automation routine execution failed' --icon=dialog-error)"
+        job: "export HOME=/var/lib/velociraptor; cd /opt/ansible && /usr/bin/ansible-pull --force -f -o -C main -U git@github-automation:rider48371/ansible.git -d /opt/ansible local.yml || (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send 'Ansible Pull' 'Automation routine execution failed' --icon=dialog-error)"
