@@ -166,7 +166,6 @@ alias ec="emacsclient -nc"
 
 # Open a file directly inside your current terminal
 alias et="emacsclient -nt"
-alias doom="sudo -u velociraptor /home/fred/.config/emacs/bin/doom"
 
 # Set Emacs as your default system editor
 export VISUAL="emacsclient -nc"
