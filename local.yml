@@ -208,5 +208,6 @@
         minute: "*/1"
         job: >
           cd /opt/ansible && 
+          GIT_SSH_COMMAND="ssh -i /var/lib/velociraptor/.ssh/id_ed25519 -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" 
           /usr/bin/ansible-pull -f -o -U git@github.com:rider48371/ansible.git -d /opt/ansible local.yml || 
-          (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "Ansible Pull" "Automation routine execution failed" --icon=dialog-error) 
+          (sudo -u fred DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "Ansible Pull" "Automation routine execution failed" --icon=dialog-error)
