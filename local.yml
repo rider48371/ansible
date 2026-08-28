@@ -19,8 +19,6 @@
       - { src: "wallpapers", dest: "Pictures/wallpapers" }
       - { src: ".local/bin/wifimenu", dest: ".local/bin/wifimenu" }
       - { src: ".ssh/config", dest: ".ssh/config" }
-      - { src: "doom", dest: ".config/doom" }
-      - { src: "emacs", dest: ".config/emacs" }
 
   tasks:
     - name: Execute configuration management with error handling
