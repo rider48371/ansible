@@ -162,14 +162,15 @@ alias sshbedroom="ssh fred@192.168.1.162"
 alias sshlivingroom="ssh fred@192.168.1.161"
 
 # Open a file in a new graphical window (GUI frame)
-alias ec="emacsclient -c -a ''"
+alias ec="emacsclient -nc"
 
 # Open a file directly inside your current terminal
-alias et="emacsclient -t -a ''"
+alias et="emacsclient -nt"
+alias doom="sudo -u velociraptor /home/fred/.config/emacs/bin/doom"
 
 # Set Emacs as your default system editor
-export VISUAL="emacsclient -c -a ''"
-export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -nc"
+export EDITOR="emacsclient -nw"
 
 
 ### Run Neofetch ***
