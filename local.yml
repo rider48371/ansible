@@ -109,6 +109,16 @@
             - cronie
             - bluetooth
 
+        # Fix: Ensure velociraptor can read every file inside the repository tree cleanly
+        - name: Force correct system permissions on repository workspace files
+          ansible.builtin.file:
+            path: /opt/ansible
+            state: directory
+            owner: velociraptor
+            group: velociraptor
+            mode: '0755'
+            recurse: true
+
         - name: Process configuration symlinks uniformly
           ansible.builtin.file:
             src: "{{ repo_files_dir }}/{{ item.src }}"
