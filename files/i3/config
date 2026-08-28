@@ -280,5 +280,9 @@ exec_always ~/Documents/onedrive
 # If the hostname is NOT 'omen', completely disable screensavers and monitor power downs (DPMS)
 exec --no-startup-id xset s off && xset s noblank && xset -dpms; fi'
 
+#lauch graphical-session.target correctly
+exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY; systemctl --user start graphical-session.target
+
+
 #used for the calendar popup
 for_window [class="Yad"] floating enable

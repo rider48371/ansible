@@ -1,4 +1,9 @@
 #!/bin/bash
+#!/bin/bash
+
+# Import display variables and start the graphical target
+systemctl --user import-environment DISPLAY XAUTHORITY
+systemctl --user start graphical-session.target
 
 #autostart programs
 lxsession &
