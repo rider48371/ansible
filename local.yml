@@ -4,9 +4,9 @@
   become: true
 
   vars:
-    repo_files_dir: "/opt/ansible/files"
+    repo_files_dir: "{{ playbook_dir }}/files"
     user_home: "/home/fred"
-    
+
     symlink_configs:
       - { src: "alacritty", dest: ".config/alacritty" }
       - { src: "bashrc", dest: ".bashrc" }
