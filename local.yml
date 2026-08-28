@@ -114,7 +114,7 @@
             src: "{{ repo_files_dir }}/{{ item.src }}"
             dest: "{{ user_home }}/{{ item.dest }}"
             state: link
-            force: yes
+            force: true
             owner: fred
             group: fred
           loop: "{{ symlink_configs }}"
